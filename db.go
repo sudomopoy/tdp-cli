@@ -48,3 +48,11 @@ func deleteTodo(db *sql.DB, id string) {
 	}
 	tx.Commit()
 }
+func deleteAllTodo(db *sql.DB) {
+	tx, _ := db.Begin()
+	_, err := tx.Exec("DELETE FROM toDo;")
+	if err != nil {
+		log.Fatal(err)
+	}
+	tx.Commit()
+}
